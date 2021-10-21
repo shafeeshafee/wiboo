@@ -1,10 +1,15 @@
 import React from "react";
+import Nav from "./components/Nav";
+import Login from "./components/Login";
+import "./App.css"
 
 function App() {
   return (
     <div>
-      <h1>Hello from App.js</h1>
-      <h1>Hey Nicholas, from new branch!</h1>
+      <Nav/>
+      
+      
+      
     </div>
   );
 }
