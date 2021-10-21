@@ -8,7 +8,7 @@ body {
 }
 
 .nav {
-  height: 12vh;
+  height: 20vh;
   background-color: rgb(250, 190, 78);
   display: flex;
 }
@@ -18,7 +18,7 @@ nav {
   justify-content: space-evenly;
   align-items: center;
   width: 50%;
-  height: 13vh;
+  height: 16vh;
   min-height: 100px;
 }
 
@@ -104,18 +104,18 @@ input {
   margin: 0 auto; 
 }
 
-button {
+/* button {
   width: fit-content;
   background-color: honeydew;
   color: black;
-  border: 2px solid navy;
+  border: 1px solid navy;
   border-radius: 5px;
   font-family: 'Big Shoulders Stencil Text', cursive;
   font-size: 20px;
-  padding: 10px;
+  padding: 4px;
   margin: 4px;
 }
 
 #button {
   margin: 4px auto;
-}
+} */
