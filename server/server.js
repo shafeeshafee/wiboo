@@ -1,25 +1,18 @@
-const express = require('express')
-const app = express()
-const PORT = 3000
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const port = process.env.PORT || 3000;
 
-const seed = require('./seed')
-const { db } = require('./db')
-const { User } = require('./models/User')
-const { Chat } = require('./models/Chat')
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
-seed()
+io.on('connection', (socket) => {
+  socket.on('chat message', msg => {
+    io.emit('chat message', msg);
+  });
+});
 
-//*************** ROUTES ******************//
-app.get('/allUsers', async (req, res) => {
-    let allUsers = await User.findAll()  
-    res.json({allUsers})
-})
-
-app.get('/allChats', async (req, res) => {
-    let allChats = await Chat.findAll()  
-    res.json({allChats})
-})
-
-app.listen( PORT, () => {
-    console.log(` Your server is now listening to port ${PORT}`)
-})
+http.listen(port, () => {
+  console.log(`Socket.IO server running at http://localhost:${port}/`);
+});
