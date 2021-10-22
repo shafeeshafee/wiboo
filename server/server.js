@@ -1,18 +1,16 @@
-const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const port = process.env.PORT || 3000;
+const io = require('socket.io')(3000)
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
+io.on('connection', socket => {
+ const id = socket.handshake.query.id
+ socket.join(id)
 
-io.on('connection', (socket) => {
-  socket.on('chat message', msg => {
-    io.emit('chat message', msg);
-  });
-});
-
-http.listen(port, () => {
-  console.log(`Socket.IO server running at http://localhost:${port}/`);
-});
+ socket.on('send-message', ({ recipients, text }) => {
+  recipients.forEach(recipient => {
+   const newRecipients = recipients.filter(r => r !== recipient)
+   newRecipients.push(id)
+   socket.broadcast.to(recipient).emit('receive-message', {
+    recipients: newRecipients, sender: id, text
+   })
+  })
+ })
+})
