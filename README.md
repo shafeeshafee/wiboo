@@ -88,8 +88,6 @@ We are looking foward to making the chat to have more features, such as video ca
 <!-- BUILT WITH -->
 ## Built With 
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * [JavaScript](https://javascript.com)
 * [ReactJS](https://reactjs.org)
 * [Express](https://expressjs.com/)
