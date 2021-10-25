@@ -37,7 +37,7 @@
     <li><a href="#whats-next">What's Next</a></li>
     <li><a href="#built-with">Built With</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
-    <li><a href="#our-team">Our Team</a></li>
+    <li><a href="#team">Team</a></li>
   </ol>
 </details>
 
