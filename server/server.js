@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const PORT = 5000;
+const models = ('./models/index.js')
 
 // const seed = require("./seed");
 // const { db } = require("./db");
