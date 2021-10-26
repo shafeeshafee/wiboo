@@ -1,15 +1,8 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const http= require('http').createServer(app)
-const io = require('socket.io')(http, {
-	cors: {
-		origin: '*',
-		methods: ['GET', 'POST'],
-	},
-});
-const cors = require("cors");
+const socket = require('socket.io');
+const cors = require('cors');
 const PORT = 5000;
-
 
 // const seed = require("./seed");
 // const { db } = require("./db");
@@ -21,29 +14,32 @@ const PORT = 5000;
 app.use(express.json());
 app.use(cors());
 
-app.use("/auth", require("./routes/auth"));
+app.use('/auth', require('./routes/auth'));
 
-//*************** ROUTES ******************//
+const server = app.listen(PORT, () => {
+	console.log('Server Running on Port 5000...');
+});
+
+const io = socket(server, {
+	cors: {
+		origin: 'http://localhost:1234',
+	},
+});
+
 io.on('connection', (socket) => {
-	socket.on('message', ({ name, message }) => {
-		io.emit('message', { name, message });
+	console.log(socket.id);
+
+	socket.on('join_room', (data) => {
+		socket.join(data);
+		console.log('User Joined Room: ' + data);
 	});
-});
 
+	socket.on('send_message', (data) => {
+		console.log(data);
+		socket.to(data.room).emit('receive_message', data.content);
+	});
 
-app.get("/allUsers", async (req, res) => {
-  let allUsers = await User.findAll();
-  res.json({ allUsers });
-});
-
-app.get("/allChats", async (req, res) => {
-  let allChats = await Chat.findAll();
-  res.json({ allChats });
-});
-
-// app.listen(PORT, () => {
-//   console.log(` Your server is now listening to port ${PORT}`);
-// });
-http.listen(PORT, function () {
-	console.log(`listening on port ${PORT}`);
+	socket.on('disconnect', () => {
+		console.log('USER DISCONNECTED');
+	});
 });
