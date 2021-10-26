@@ -90,7 +90,11 @@ nav {
   margin: 3rem auto;
   width: 600px;
   height: 350px;
+<<<<<<< HEAD
+  border: 5px solid rgba(0, 0, 0, 0.658);
+=======
   border: 5px solid #0091ff;
+>>>>>>> f6905658c8b00d089484f4207a554883c11473dd
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -102,7 +106,11 @@ nav {
   margin: 10px;
   width: 200px;
   height: 40px;
+<<<<<<< HEAD
+  border: 2px solid rgba(0, 0, 0, 0.658);
+=======
   border: 2px solid #0091ff;
+>>>>>>> f6905658c8b00d089484f4207a554883c11473dd
   background-color: transparent;
   padding-left: 10px;
   color: gray;
@@ -117,7 +125,11 @@ nav {
   width: 200px;
   height: 50px;
   border: none;
+<<<<<<< HEAD
+  background-color: rgba(0, 0, 0, 0.658);
+=======
   background-color: #0091ff;
+>>>>>>> f6905658c8b00d089484f4207a554883c11473dd
   color: white;
   font-size: 16px;
   margin-top: 45px;
@@ -125,6 +137,19 @@ nav {
 
 .logIn button:hover {
   cursor: pointer;
+<<<<<<< HEAD
+  background-color: #cc5500;
+}
+
+.chatContainer {
+  width: 800px;
+  height: 85vh;
+  border: 5px solid rgba(0, 0, 0, 0.658);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto;
+=======
   background-color: #037edc;
 }
 
@@ -135,6 +160,7 @@ nav {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+>>>>>>> f6905658c8b00d089484f4207a554883c11473dd
 }
 
 .chatContainer .messages {
@@ -154,7 +180,11 @@ nav {
   flex: 80%;
   height: calc(100% -5px);
   border: none;
+<<<<<<< HEAD
+  border-top: 5px solid rgba(0, 0, 0, 0.658);
+=======
   border-top: 5px solid #0091ff;
+>>>>>>> f6905658c8b00d089484f4207a554883c11473dd
   padding-left: 20px;
   font-size: 20px;
 }
@@ -162,7 +192,11 @@ nav {
 .chatContainer .messageInputs button {
   flex: 20%;
   height: 100%;
+<<<<<<< HEAD
+  background-color: #cc5500;
+=======
   background-color: #0091ff;
+>>>>>>> f6905658c8b00d089484f4207a554883c11473dd
   border: none;
   color: white;
   font-size: 18px;
@@ -189,7 +223,11 @@ nav {
 }
 
 #Other .messageIndividual {
+<<<<<<< HEAD
+  background: linear-gradient(#ecf017, #f8f8f8);
+=======
   background-color: #5ff064;
+>>>>>>> f6905658c8b00d089484f4207a554883c11473dd
   color: black;
 }
 .messageIndividual {
@@ -198,13 +236,24 @@ nav {
   border-radius: 10px;
   display: grid;
   place-items: center;
+<<<<<<< HEAD
+  background: linear-gradient(#e66465, #e6e6e6);
+  opacity: 0.9;
+  color: black;
+  font-weight: bold;
+=======
   background-color: #0091ff;
   opacity: 0.9;
   color: white;
+>>>>>>> f6905658c8b00d089484f4207a554883c11473dd
   font-family: Arial, Helvetica, sans-serif;
   margin-right: 10px;
   margin-top: 20px;
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> f6905658c8b00d089484f4207a554883c11473dd
 @charset "UTF-8";/*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
