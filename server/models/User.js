@@ -1,15 +1,15 @@
-// const { db, DataTypes, Model } = require("../db");
+const { db, DataTypes, Model } = require("../db");
 
-// class User extends Model {}
+class User extends Model {}
 
-// User.init(
-//   {
-//     username: DataTypes.STRING,
-//     password: DataTypes.STRING,
-//   },
-//   {
-//     sequelize: db,
-//   }
-// );
+User.init(
+  {
+    username: DataTypes.STRING,
+    password: DataTypes.STRING,
+  },
+  {
+    sequelize: db,
+  }
+);
 
-// module.exports = { User };
+module.exports = { User };

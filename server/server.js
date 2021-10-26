@@ -3,12 +3,10 @@ const app = express();
 const cors = require("cors");
 const PORT = 5000;
 
-// const seed = require("./seed");
-// const { db } = require("./db");
-// const { User } = require("./models/User");
-// const { Chat } = require("./models/Chat");
+const seed = require("./seed");
+const { db } = require("./db");
 
-// seed();
+seed();
 
 app.use(express.json());
 app.use(cors());

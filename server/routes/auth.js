@@ -3,7 +3,8 @@ const router = require("express").Router();
 const { check, validationResult } = require("express-validator");
 const JWT = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { users } = require("../db");
+const { User } = require("../models/User");
+const users = require("../db");
 
 // SIGNUP
 router.post(
@@ -27,12 +28,17 @@ router.post(
       });
     }
 
-    // Validate if the user doesnt already exist;
-    let user = users.find((user) => {
-      return user.email === email;
+    let checkUser = await User.findAll({
+      where: {
+        username: email,
+      },
     });
 
-    if (user) {
+    let userAlreadyExists = Array.isArray(checkUser) && checkUser.length;
+
+    // if theres already a user, then its value will be more than 0, i.e. 1
+    // so if there is, return error
+    if (userAlreadyExists > 0) {
       return res.status(422).json({
         errors: [
           {
@@ -46,8 +52,8 @@ router.post(
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Save the password into the db
-    users.push({
-      email,
+    const postUser = await User.create({
+      username: email,
       password: hashedPassword,
     });
 
@@ -55,8 +61,9 @@ router.post(
       expiresIn: 360000,
     });
 
-    res.json({
+    return res.status(201).json({
       token,
+      postUser,
     });
   }
 );
@@ -66,11 +73,15 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   // Check if user with email exists
-  let user = users.find((user) => {
-    return user.email === email;
+  let user = await User.findAll({
+    where: {
+      username: email,
+    },
   });
 
-  if (!user) {
+  let dbHasUser = Array.isArray(user) && user.length;
+
+  if (!dbHasUser) {
     return res.status(422).json({
       errors: [
         {
@@ -81,7 +92,7 @@ router.post("/login", async (req, res) => {
   }
 
   // Check if the password if valid
-  let isMatch = await bcrypt.compare(password, user.password);
+  let isMatch = await bcrypt.compare(password, user[0].password);
 
   if (!isMatch) {
     return res.status(404).json({
@@ -98,14 +109,21 @@ router.post("/login", async (req, res) => {
     expiresIn: 360000,
   });
 
+  let getUser = await User.findAll({
+    where: {
+      username: email,
+    },
+  });
+
   res.json({
     token,
   });
 });
 
 // ALL USER
-router.get("/all", (req, res) => {
-  res.json(users);
+router.get("/all", async (req, res) => {
+  let allUsers = await User.findAll();
+  res.json(allUsers);
 });
 
 module.exports = router;
