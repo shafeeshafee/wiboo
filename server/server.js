@@ -3,7 +3,6 @@ const app = express();
 const socket = require("socket.io");
 const cors = require("cors");
 const PORT = 5000;
-
 const seed = require("./seed");
 
 seed();
