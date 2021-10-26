@@ -15,7 +15,7 @@ body {
 
 .nav {
   height: 20vh;
-  background-color: rgb(250, 190, 78);
+  background-color: rgb(95, 95, 95);
   display: flex;
 }
 
@@ -37,16 +37,17 @@ nav {
 
 .showID {
   text-align: center;
-  background-color: rgb(242, 165, 22);
+  background-color: rgb(207, 159, 69);
   height: 85vh;
   min-height: 600px;
 }
 
 .links {
-  color: #cc5500;
+  color: #f7f7f7;
   text-decoration: none;
   font-weight: bold;
   font-family: "Zen Kaku Gothic Antique";
+  font-size: large;
 }
 .links:hover {
   color: black;
@@ -131,10 +132,12 @@ nav {
 .chatContainer {
   width: 600px;
   height: 350px;
-  border: 5px solid #0091ff;
+  border: 5px solid #020100;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  
 }
 
 .chatContainer .messages {
@@ -154,15 +157,16 @@ nav {
   flex: 80%;
   height: calc(100% -5px);
   border: none;
-  border-top: 5px solid #0091ff;
+  border-top: 5px solid #000000;
   padding-left: 20px;
   font-size: 20px;
+  
 }
 
 .chatContainer .messageInputs button {
   flex: 20%;
   height: 100%;
-  background-color: #0091ff;
+  background-color: #000305;
   border: none;
   color: white;
   font-size: 18px;
@@ -198,9 +202,9 @@ nav {
   border-radius: 10px;
   display: grid;
   place-items: center;
-  background-color: #0091ff;
+ background: linear-gradient(white, orange);
   opacity: 0.9;
-  color: white;
+  color: rgb(0, 0, 0);
   font-family: Arial, Helvetica, sans-serif;
   margin-right: 10px;
   margin-top: 20px;
