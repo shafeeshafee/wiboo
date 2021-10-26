@@ -4,7 +4,7 @@ const socket = require('socket.io');
 const cors = require('cors');
 const PORT = 5000;
 
-const seed = require('./seed');
+// const seed = require("./seed");
 // const { db } = require("./db");
 // const { User } = require("./models/User");
 // const { Chat } = require("./models/Chat");

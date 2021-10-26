@@ -1,45 +1,17 @@
-import React, { useState, useEffect ,useRef} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
-import io from 'socket.io-client';
-import { TextField } from '@mui/material';
 import { useHistory } from 'react-router-dom';
+import io from 'socket.io-client';
 
+let socket;
+const CONNECTION_PORT = 'localhost:5000';
 
+const loggedIn = () => {
+	return localStorage.getItem('loggedIn');
+};
 
 function Home() {
-	const [state, setState] = useState({ message: '', name: '' });
-	const [chat, setChat] = useState([]);
 	let history = useHistory();
-	const socketRef = useRef();
-
-  useEffect(() => {
-		socketRef.current = io.connect('http://localhost:5000');
-		socketRef.current.on('message', ({ name, message }) => {
-			setChat([...chat, { name, message }]);
-		});
-		return () => socketRef.current.disconnect();
-	}, [chat]);
-  
-  const onTextChange = e =>{
-    setState({...state, [e.target.name]: e.target.value})
-  }
-
-  const onMessageSubmit = (e) => {
-		const { name, message } = state;
-		socketRef.current.emit('message', { name, message });
-		e.preventDefault();
-		setState({ message: '', name });
-	};
-
-  const renderChat =()=>{
-    return chat.map(({name,message}, index)=>(
-      <div key={index}>
-        <h3>{name}: <span>{message}</span></h3>
-      </div>
-    ))
-  }
-
-
 
 	const redirect = () => {
 		localStorage.clear();
@@ -47,44 +19,94 @@ function Home() {
 		history.go(0);
 	};
 
-	return (
-		<div className='card' >
-			<form onSubmit={onMessageSubmit}>
-				<h1>Messanger</h1>
-				<div className='name-feild'>
-					<TextField
-						name='name'
-						onChange={(e) => onTextChange(e)}
-						value={state.name}
-						label='Name'
-					/>
-				</div>
-				<div>
-					<TextField
-						name='message'
-						onChange={(e) => onTextChange(e)}
-						value={state.message}
-						id='outlined-multiline-static'
-						variant='outlined'
-						label='Message'
-					/>
-				</div>
-				<button style={{ background: '#E3963E', color: '#fff' }}>
-					Send Message
-				</button>
-			</form>
-			<div className='render-chat'>
-				<h1>Chat Log</h1>
-				{renderChat()}
-			</div>
+	// Before Login
+	const [loggedIn, setLoggedIn] = useState(false);
+	const [room, setRoom] = useState('');
+	const [userName, setUserName] = useState('');
 
-			<div className='centerize-col small-width'>
-				<Button
-					onClick={redirect}
-					variant='contained'
-					style={{ background: '#E3963E', color: '#fff' }}>
-					Log Out
-				</Button>
+	// After Login
+	const [message, setMessage] = useState('');
+	const [messageList, setMessageList] = useState([]);
+
+	useEffect(() => {
+		socket = io(CONNECTION_PORT);
+	}, [CONNECTION_PORT]);
+
+	useEffect(() => {
+		socket.on('receive_message', (data) => {
+			setMessageList([...messageList, data]);
+		});
+	});
+	const connectToRoom = () => {
+		setLoggedIn(true);
+		socket.emit('join_room', room);
+	};
+
+	const sendMessage = async () => {
+		let messageContent = {
+			room: room,
+			content: {
+				author: userName,
+				message: message,
+			},
+		};
+
+		await socket.emit('send_message', messageContent);
+		setMessageList([...messageList, messageContent.content]);
+		setMessage('');
+	};
+
+	return (
+		<div>
+			<div className='App'>
+				{!loggedIn ? (
+					<div className='logIn'>
+						<div className='inputs'>
+							<input
+								type='text'
+								placeholder='Name...'
+								onChange={(e) => {
+									setUserName(e.target.value);
+								}}
+							/>
+							<input
+								type='text'
+								placeholder='Room...'
+								onChange={(e) => {
+									setRoom(e.target.value);
+								}}
+							/>
+						</div>
+						<button onClick={connectToRoom}>Enter Chat</button>
+					</div>
+				) : (
+					<div className='chatContainer'>
+						<div className='messages'>
+							{messageList.map((val, key) => {
+								return (
+									<div
+										className='messageContainer'
+										id={val.author == userName ? 'You' : 'Other'}>
+										<div className='messageIndividual'>
+											{val.author}: {val.message}
+										</div>
+									</div>
+								);
+							})}
+						</div>
+
+						<div className='messageInputs'>
+							<input
+								type='text'
+								placeholder='Message...'
+								onChange={(e) => {
+									setMessage(e.target.value);
+								}}
+							/>
+							<button onClick={sendMessage}>Send</button>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);
