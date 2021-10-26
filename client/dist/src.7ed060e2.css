@@ -8,8 +8,8 @@ body {
 }
 
 .nav {
-  height: 20vh;
-  background-color: rgb(250, 190, 78);
+  height: 16vh;
+  background-color: rgb(95, 95, 95);
   display: flex;
 }
 
@@ -18,7 +18,7 @@ nav {
   justify-content: space-evenly;
   align-items: center;
   width: 50%;
-  height: 16vh;
+  height: 100%;
   min-height: 100px;
 }
 
@@ -37,13 +37,14 @@ nav {
 }
 
 .links {
-  color: #cc5500;
+  color: #ff9c56;
   text-decoration: none;
   font-weight: bold;
   font-family: "Zen Kaku Gothic Antique";
+  font-size: large;
 }
 .links:hover {
-  color: black;
+  color: rgb(253, 253, 253);
 }
 
 /* shaf css auth cm */
@@ -82,7 +83,45 @@ nav {
 .css-fwkidx-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
   top: 5% !important;
 }
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 30px;
+  min-height: 30rem;
+}
+form {
+  max-width: 350px;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 3px 24px -8px rgba(0, 0, 0, 0.75);
+}
 
+.name-field {
+  margin-bottom: 40px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px;
+  background: transparent;
+  border-radius: 5px;
+}
+
+.render-chat {
+  height: 50vh;
+  max-width: 350px;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 3px 24px -8px rgba(0, 0, 0, 0.75);
+}
+
+h3 {
+  color: #2f72da;
+}
+
+span {
+  color: black;
+}
 @charset "UTF-8";/*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

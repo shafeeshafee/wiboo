@@ -82,7 +82,7 @@ function LogIn() {
             variant="contained"
             style={{ background: "#CC5500", color: "#fff" }}
           >
-            Submit
+            Sign In
           </Button>
         </div>
       </form>

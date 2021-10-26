@@ -1,7 +1,15 @@
 const express = require("express");
 const app = express();
+const http= require('http').createServer(app)
+const io = require('socket.io')(http, {
+	cors: {
+		origin: '*',
+		methods: ['GET', 'POST'],
+	},
+});
 const cors = require("cors");
 const PORT = 5000;
+
 
 // const seed = require("./seed");
 // const { db } = require("./db");
@@ -16,6 +24,13 @@ app.use(cors());
 app.use("/auth", require("./routes/auth"));
 
 //*************** ROUTES ******************//
+io.on('connection', (socket) => {
+	socket.on('message', ({ name, message }) => {
+		io.emit('message', { name, message });
+	});
+});
+
+
 app.get("/allUsers", async (req, res) => {
   let allUsers = await User.findAll();
   res.json({ allUsers });
@@ -26,6 +41,9 @@ app.get("/allChats", async (req, res) => {
   res.json({ allChats });
 });
 
-app.listen(PORT, () => {
-  console.log(` Your server is now listening to port ${PORT}`);
+// app.listen(PORT, () => {
+//   console.log(` Your server is now listening to port ${PORT}`);
+// });
+http.listen(PORT, function () {
+	console.log(`listening on port ${PORT}`);
 });
