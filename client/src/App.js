@@ -12,7 +12,6 @@ function App() {
     return localStorage.getItem("loggedIn");
   };
 
-  console.log(isLoggedIn());
   return (
     <div className="App">
       <Nav />

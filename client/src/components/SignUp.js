@@ -13,7 +13,6 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(data);
     axios({
       method: "POST",
       url: "http://localhost:5000/auth/signup",
@@ -26,9 +25,9 @@ function SignUp() {
         setVal(0);
         setSignedUp((val) => !val);
       })
-      .catch((response) => {
+      .catch((err) => {
         //handle error
-        console.log(response);
+        console.error(err.message);
       });
   };
 

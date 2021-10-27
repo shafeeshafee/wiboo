@@ -23,7 +23,6 @@ function LogIn() {
     e.preventDefault();
     localStorage.clear();
 
-    console.log(data);
     axios({
       method: "POST",
       url: "http://localhost:5000/auth/login",
@@ -33,12 +32,11 @@ function LogIn() {
       .then((response) => {
         //handle success
         localStorageSet(response.data.token);
-        console.log("Successfully LoggedIn.", response.data.token);
         redirect();
       })
-      .catch((response) => {
+      .catch((err) => {
         //handle error
-        console.log(response);
+        console.err(err.message);
       });
   };
   return (
