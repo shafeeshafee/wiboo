@@ -247,11 +247,13 @@ body {
 }
 .messageIndividual {
   display: flex;
-  width: 200px;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  padding: 2rem;
   height: 60px;
   padding: 0.5 rem;
   border-radius: 10px;
-  display: grid;
   place-items: center;
   background: linear-gradient(#e66465, #e6e6e6);
   opacity: 0.9;
@@ -260,6 +262,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin-right: 10px;
   margin-top: 20px;
+}
+
+.timestamp-chat {
+  opacity: 0.7;
 }
 
 @charset "UTF-8";/*!

@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
+import useSound from "use-sound";
 import { css } from "@emotion/css";
 import ScrollToBottom from "react-scroll-to-bottom";
 
 import sendBtn from "../icons/send-btn.png";
+import formatAMPM from "../helpers/GetDate";
+
+import notification from "/notification.mp3";
 
 let socket;
 const CONNECTION_PORT = "localhost:5000";
 
 function Home() {
+  const [play] = useSound(notification, { volume: 0.3 });
+
   // Before Login
   const [userEntered, setUserEntered] = useState(false);
   const [room, setRoom] = useState("");
@@ -25,6 +31,7 @@ function Home() {
   useEffect(() => {
     socket.on("receive_message", (data) => {
       setMessageList([...messageList, data]);
+      play();
     });
   });
   const connectToRoom = () => {
@@ -95,7 +102,10 @@ function Home() {
                       id={val.author === userName ? "You" : "Other"}
                     >
                       <div className="messageIndividual">
-                        {val.author}: {val.message}
+                        <span className="timestamp-chat">
+                          {formatAMPM(new Date())}
+                        </span>
+                        - {val.author}: {val.message}{" "}
                       </div>
                     </div>
                   );
