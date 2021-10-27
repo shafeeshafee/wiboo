@@ -4,6 +4,7 @@ import { css } from "@emotion/css";
 import ScrollToBottom from "react-scroll-to-bottom";
 
 import sendBtn from "../icons/send-btn.png";
+import formatAMPM from "../helpers/GetDate";
 
 let socket;
 const CONNECTION_PORT = "localhost:5000";
@@ -95,7 +96,10 @@ function Home() {
                       id={val.author === userName ? "You" : "Other"}
                     >
                       <div className="messageIndividual">
-                        {val.author}: {val.message}
+                        <span className="timestamp-chat">
+                          {formatAMPM(new Date())}
+                        </span>
+                        - {val.author}: {val.message}{" "}
                       </div>
                     </div>
                   );
