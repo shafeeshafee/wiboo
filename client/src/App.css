@@ -149,6 +149,9 @@ body {
 }
 
 .chatContainer {
+  border-radius: 0px;
+  background: #ffffff;
+  box-shadow: 23px 23px 46px #4a4a4ac0, -13px -13px 16px #78787867;
   width: 800px;
   height: 65vh;
   border: 3px solid rgba(0, 0, 0, 0.658);
