@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
+import useSound from "use-sound";
 import { css } from "@emotion/css";
 import ScrollToBottom from "react-scroll-to-bottom";
 
 import sendBtn from "../icons/send-btn.png";
 import formatAMPM from "../helpers/GetDate";
 
+import notification from "/notification.mp3";
+
 let socket;
 const CONNECTION_PORT = "localhost:5000";
 
 function Home() {
+  const [play] = useSound(notification);
+
   // Before Login
   const [userEntered, setUserEntered] = useState(false);
   const [room, setRoom] = useState("");
@@ -49,6 +54,7 @@ function Home() {
     await socket.emit("send_message", messageContent);
     setMessageList([...messageList, messageContent.content]);
     setMessage("");
+    play();
   };
 
   const ROOT_CSS = css({
