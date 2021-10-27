@@ -13,7 +13,7 @@ let socket;
 const CONNECTION_PORT = "localhost:5000";
 
 function Home() {
-  const [play] = useSound(notification);
+  const [play] = useSound(notification, { volume: 0.3 });
 
   // Before Login
   const [userEntered, setUserEntered] = useState(false);
@@ -31,6 +31,7 @@ function Home() {
   useEffect(() => {
     socket.on("receive_message", (data) => {
       setMessageList([...messageList, data]);
+      play();
     });
   });
   const connectToRoom = () => {
@@ -54,7 +55,6 @@ function Home() {
     await socket.emit("send_message", messageContent);
     setMessageList([...messageList, messageContent.content]);
     setMessage("");
-    play();
   };
 
   const ROOT_CSS = css({
