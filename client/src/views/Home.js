@@ -84,7 +84,7 @@ function Home() {
         ) : (
           <div className="chatContainer">
             <div className="room-info">
-              {userName} - Chat Room: {room}
+              Entered as: {userName} || Chat Room: {room}
             </div>
             <div className="messages">
               <ScrollToBottom className={ROOT_CSS}>
