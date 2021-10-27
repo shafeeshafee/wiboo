@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
+import { css } from "@emotion/css";
+import ScrollToBottom from "react-scroll-to-bottom";
+
+import sendBtn from "../icons/send-btn.png";
 
 let socket;
 const CONNECTION_PORT = "localhost:5000";
@@ -29,6 +33,10 @@ function Home() {
   };
 
   const sendMessage = async () => {
+    if (!message) {
+      alert("Messages can't be blank.");
+      return;
+    }
     let messageContent = {
       room: room,
       content: {
@@ -42,11 +50,19 @@ function Home() {
     setMessage("");
   };
 
+  const ROOT_CSS = css({
+    height: "100%",
+    width: "100%",
+  });
+
   return (
     <div>
-      <div className="App">
+      <div>
         {!userEntered ? (
           <div className="logIn">
+            <h3 style={{ padding: "1rem", fontSize: "2rem" }}>
+              Welcome! Enjoy your stay~
+            </h3>
             <div className="inputs">
               <input
                 type="text"
@@ -57,7 +73,7 @@ function Home() {
               />
               <input
                 type="text"
-                placeholder="Room..."
+                placeholder="Enter a Room ID..."
                 onChange={(e) => {
                   setRoom(e.target.value);
                 }}
@@ -67,19 +83,24 @@ function Home() {
           </div>
         ) : (
           <div className="chatContainer">
+            <div className="room-info">
+              {userName} - Chat Room: {room}
+            </div>
             <div className="messages">
-              {messageList.map((val, key) => {
-                return (
-                  <div
-                    className="messageContainer"
-                    id={val.author == userName ? "You" : "Other"}
-                  >
-                    <div className="messageIndividual">
-                      {val.author}: {val.message}
+              <ScrollToBottom className={ROOT_CSS}>
+                {messageList.map((val, key) => {
+                  return (
+                    <div
+                      className="messageContainer"
+                      id={val.author === userName ? "You" : "Other"}
+                    >
+                      <div className="messageIndividual">
+                        {val.author}: {val.message}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </ScrollToBottom>
             </div>
 
             <div className="messageInputs">
@@ -89,8 +110,11 @@ function Home() {
                 onChange={(e) => {
                   setMessage(e.target.value);
                 }}
+                value={message}
               />
-              <button onClick={sendMessage}>Send</button>
+              <button onClick={sendMessage}>
+                <img src={sendBtn} alt="send-btn" />
+              </button>
             </div>
           </div>
         )}
