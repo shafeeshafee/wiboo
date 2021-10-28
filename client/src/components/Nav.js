@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+const logo = require("../Images/Wiboo-logos.jpeg");
 
 const Nav = () => {
   let history = useHistory();
-  const logo = require("../Images/Wiboo-logos.jpeg");
 
   const isLoggedIn = () => {
     return localStorage.getItem("loggedIn");
