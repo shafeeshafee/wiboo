@@ -25,7 +25,7 @@ function LogIn() {
 
     axios({
       method: "POST",
-      url: `${process.env.SERVER_URL}/auth/login`,
+      url: `https://app-mutyjmjnfq-uc.a.run.app`,
       data,
       headers: { "Content-Type": "application/json" },
     })

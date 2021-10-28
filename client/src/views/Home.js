@@ -9,7 +9,7 @@ import sendBtn from "../icons/send-btn.png";
 import formatAMPM from "../helpers/GetDate";
 
 let socket;
-const CONNECTION_PORT = process.env.SERVER_URL;
+const CONNECTION_PORT = `https://app-mutyjmjnfq-uc.a.run.app`;
 
 function Home() {
   const [play] = useSound(notification, { volume: 0.3 });
