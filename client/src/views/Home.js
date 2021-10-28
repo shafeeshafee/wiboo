@@ -9,10 +9,10 @@ import sendBtn from "../icons/send-btn.png";
 import formatAMPM from "../helpers/GetDate";
 
 require("dotenv").config();
-import notification from "/notification.mp3";
+import notification from "../audio/notification.mp3";
 
 let socket;
-const CONNECTION_PORT = `${SERVER_URL}`;
+const CONNECTION_PORT = `${process.env.SERVER_URL}`;
 
 function Home() {
   const [play] = useSound(notification, { volume: 0.3 });
