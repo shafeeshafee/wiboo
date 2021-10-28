@@ -1,15 +1,13 @@
 require("dotenv").config();
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
+import notification from "../audio/notification.mp3";
 import useSound from "use-sound";
 import { css } from "@emotion/css";
 import ScrollToBottom from "react-scroll-to-bottom";
 
 import sendBtn from "../icons/send-btn.png";
 import formatAMPM from "../helpers/GetDate";
-
-require("dotenv").config();
-import notification from "../audio/notification.mp3";
 
 let socket;
 const CONNECTION_PORT = `${process.env.SERVER_URL}`;
