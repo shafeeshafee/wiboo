@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import logo from "../Images/Wiboos-logos.jpeg";
+// import logo from "../Images/Wiboos-logos.jpeg";
 
 const Nav = () => {
   let history = useHistory();
@@ -19,7 +19,11 @@ const Nav = () => {
   return (
     <div className="nav">
       <Link to={isLoggedIn() ? "/" : "signup"}>
-        <img className="logo" src={logo} alt="Logo" />
+        <img
+          className="logo"
+          src="https://i.imgur.com/1bf5NNP.jpeg"
+          alt="Logo"
+        />
       </Link>
       <div className="nav-content">
         <Link to={isLoggedIn() ? "/" : "signup"} className="links">
