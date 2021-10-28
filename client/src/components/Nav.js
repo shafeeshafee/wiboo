@@ -25,12 +25,12 @@ const Nav = () => {
         <Link to={isLoggedIn() ? "/" : "signup"} className="links">
           Home
         </Link>
-        <Link to="#" className="links">
+        <Link to="/team" className="links">
           Team
         </Link>
-        <Link to="#" className="links">
+        <a href="mailto:amirrorphone@gmail.com" className="links">
           Contact
-        </Link>
+        </a>
         {isLoggedIn() && (
           <Link to="/signup" className="links" onClick={handleLogOut}>
             Log Out

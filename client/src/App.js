@@ -6,6 +6,7 @@ import { Redirect } from "react-router";
 import Home from "./views/Home";
 import Nav from "./components/Nav";
 import SignUpContainer from "./components/SignUpContainer";
+import TeamPage from "./views/TeamPage";
 
 function App() {
   const isLoggedIn = () => {
@@ -17,11 +18,14 @@ function App() {
       <Nav />
       {!isLoggedIn() ? <Redirect to="/signup" /> : <Redirect to="/" />}
       <Switch>
-        <Route path="/signup">
+        <Route exact path="/signup">
           <SignUpContainer />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/team">
+          <TeamPage />
         </Route>
       </Switch>
     </div>
