@@ -3,14 +3,13 @@
 
 body {
   font-family: "Big Shoulders Stencil Text", cursive;
-  font-size: 1.5rem;
   padding: 0;
   margin: 0;
 }
 
 .App {
   height: 100vh;
-  background-image: url("/bg.png");
+  background-image: url("https://i.imgur.com/T0l1vfD.png");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
@@ -250,7 +249,7 @@ body {
   justify-content: center;
   align-items: center;
   max-width: 100%;
-  padding: 2rem;
+  padding: 1 rem;
   height: 60px;
   padding: 0.5 rem;
   border-radius: 10px;
