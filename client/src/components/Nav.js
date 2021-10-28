@@ -29,10 +29,10 @@ const Nav = () => {
         <Link to={isLoggedIn() ? "/" : "signup"} className="links">
           Home
         </Link>
-        <Link to="#" className="links">
+        <Link to="/team" className="links">
           Team
         </Link>
-        <Link to="#" className="links">
+        <Link to="mailto:shafeelinks@gmail.com" className="links">
           Contact
         </Link>
         {isLoggedIn() && (
