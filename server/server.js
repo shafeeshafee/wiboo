@@ -1,8 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const socket = require("socket.io");
 const cors = require("cors");
-const PORT = 5000;
+const PORT = process.env.ACCESS_URL;
 const seed = require("./seed");
 
 seed();
@@ -13,12 +14,12 @@ app.use(cors());
 app.use("/auth", require("./routes/auth"));
 
 const server = app.listen(PORT, () => {
-  console.log("Server Running on Port 5000...");
+  console.log("Server Running on Serverless Port...");
 });
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:1234",
+    origin: "http://localhost:3000",
   },
 });
 

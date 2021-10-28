@@ -1,3 +1,4 @@
+require("dotenv").config();
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import useSound from "use-sound";
@@ -7,10 +8,11 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import sendBtn from "../icons/send-btn.png";
 import formatAMPM from "../helpers/GetDate";
 
+require("dotenv").config();
 import notification from "/notification.mp3";
 
 let socket;
-const CONNECTION_PORT = "localhost:5000";
+const CONNECTION_PORT = `${SERVER_URL}`;
 
 function Home() {
   const [play] = useSound(notification, { volume: 0.3 });
