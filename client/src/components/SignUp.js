@@ -15,7 +15,7 @@ function SignUp() {
 
     axios({
       method: "POST",
-      url: "http://localhost:5000/auth/signup",
+      url: `${process.env.SERVER_URL}/auth/signup`,
       data,
       headers: { "Content-Type": "application/json" },
     })

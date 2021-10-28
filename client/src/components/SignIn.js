@@ -25,7 +25,7 @@ function LogIn() {
 
     axios({
       method: "POST",
-      url: "http://localhost:5000/auth/login",
+      url: `${process.env.SERVER_URL}/auth/login`,
       data,
       headers: { "Content-Type": "application/json" },
     })
