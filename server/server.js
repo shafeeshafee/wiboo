@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const socket = require("socket.io");
 const cors = require("cors");
-const PORT = process.env.ACCESS_URL;
+const PORT = process.env.PORT || 5000;
 const seed = require("./seed");
 
 seed();
@@ -14,12 +14,13 @@ app.use(cors());
 app.use("/auth", require("./routes/auth"));
 
 const server = app.listen(PORT, () => {
-  console.log("Server Running on Serverless Port...");
+  console.log("Server Running on: ", PORT);
 });
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
+    methods: ["GET", "POST"],
   },
 });
 

@@ -3,13 +3,14 @@
 
 body {
   font-family: "Big Shoulders Stencil Text", cursive;
+  font-size: 1.5rem;
   padding: 0;
   margin: 0;
 }
 
 .App {
   height: 100vh;
-  background-image: url("https://i.imgur.com/T0l1vfD.png");
+  background-image: url("/bg.png");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
@@ -249,7 +250,7 @@ body {
   justify-content: center;
   align-items: center;
   max-width: 100%;
-  padding: 1 rem;
+  padding: 2rem;
   height: 60px;
   padding: 0.5 rem;
   border-radius: 10px;
@@ -265,4 +266,47 @@ body {
 
 .timestamp-chat {
   opacity: 0.7;
+}
+
+/* team page */
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.team-container .profile-pic {
+  filter: drop-shadow(5px 3px 10px #525252);
+}
+
+.team-container ul {
+  list-style-type: none;
+}
+
+.user-box {
+  margin: 0 1rem;
+}
+
+.team-member-name {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  place-items: center;
+  margin-top: 1rem;
+}
+
+.social-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.social-container li {
+  margin: 1rem 1.3rem 0 0;
 }

@@ -6,6 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 # Copy app source code
+
+ENV PORT 5000
 COPY . .
 
 #Expose port and start application
