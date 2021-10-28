@@ -32,9 +32,9 @@ const Nav = () => {
         <Link to="/team" className="links">
           Team
         </Link>
-        <Link to="mailto:shafeelinks@gmail.com" className="links">
+        <a href="mailto:shafeelinks@gmail.com" className="links">
           Contact
-        </Link>
+        </a>
         {isLoggedIn() && (
           <Link to="/signup" className="links" onClick={handleLogOut}>
             Log Out
