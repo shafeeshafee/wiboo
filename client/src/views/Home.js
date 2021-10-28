@@ -12,7 +12,7 @@ let socket;
 const CONNECTION_PORT = `https://app-mutyjmjnfq-uc.a.run.app`;
 
 function Home() {
-  const [play] = useSound(notification, { volume: 0.3 });
+  const [play] = useSound(notification, { volume: 0.05 });
 
   // Before Login
   const [userEntered, setUserEntered] = useState(false);
