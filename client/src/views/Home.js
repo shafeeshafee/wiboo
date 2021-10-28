@@ -1,4 +1,3 @@
-require("dotenv").config();
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import notification from "../audio/notification.mp3";
