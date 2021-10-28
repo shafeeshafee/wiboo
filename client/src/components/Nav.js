@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-const logo = require("../Images/Wiboo-logos.jpeg");
+import logo from "../Images/Wiboos-logos.jpeg";
 
 const Nav = () => {
   let history = useHistory();
