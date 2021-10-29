@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 function LogIn() {
   let history = useHistory();
   const [data, setData] = useState({ email: "", password: "" });
+  const [hasError, setHasError] = useState("");
 
   const localStorageSet = (token) => {
     localStorage.setItem("loggedIn", token);
@@ -36,7 +37,8 @@ function LogIn() {
       })
       .catch((err) => {
         //handle error
-        console.err(err.message);
+        console.log(err.response.data.errors[0].msg);
+        setHasError(err.response.data.errors[0].msg);
       });
   };
   return (
@@ -82,6 +84,7 @@ function LogIn() {
           >
             Sign In
           </Button>
+          <p className="error-msg">{hasError}</p>
         </div>
       </form>
     </div>

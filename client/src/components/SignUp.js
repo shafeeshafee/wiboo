@@ -9,6 +9,7 @@ function SignUp() {
   const { val, setVal, signedUp, setSignedUp } = useContext(SignUpSuccess);
 
   const [data, setData] = useState({ email: "", password: "" });
+  const [hasError, setHasError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +28,8 @@ function SignUp() {
       })
       .catch((err) => {
         //handle error
-        console.error(err.message);
+        setHasError(err.response.data.errors[0].msg);
+        console.log(err.response.data.errors[0].msg);
       });
   };
 
@@ -74,6 +76,7 @@ function SignUp() {
             >
               Submit
             </Button>
+            <p className="error-msg">{hasError}</p>
           </div>
         </form>
       </div>
