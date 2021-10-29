@@ -13,7 +13,7 @@
    The Best Online Social Platform for Anime Heads!
     <br />
     <br />
-    <a href="https://drive.google.com/file/d/19d-jW-OWbmJs9IbzI-d6IqU58TS1DkR2/view?usp=sharing">👀 View Demo</a>
+    <a href="https://wiboo-chat.netlify.app/">👀 View Demo</a>
     ·
     <a href="mailto:shafeelinks@gmail.com">🐛Report Bug</a>
     <a href="mailto:amirrorphone@gmail.com">✍🏽Request Feature</a>
