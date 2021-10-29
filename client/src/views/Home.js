@@ -57,6 +57,13 @@ function Home() {
     setMessage("");
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      console.log("hi");
+      sendMessage();
+    }
+  };
+
   const ROOT_CSS = css({
     height: "100%",
     width: "100%",
@@ -121,6 +128,7 @@ function Home() {
                   setMessage(e.target.value);
                 }}
                 value={message}
+                onKeyPress={handleKeyPress}
               />
               <button onClick={sendMessage}>
                 <img src={sendBtn} alt="send-btn" />
