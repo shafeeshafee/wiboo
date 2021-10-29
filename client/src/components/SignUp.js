@@ -16,7 +16,7 @@ function SignUp() {
 
     axios({
       method: "POST",
-      url: `https://app-mutyjmjnfq-uc.a.run.app/auth/signup`,
+      url: `${process.env.REACT_APP_SERVER_URL}/auth/signup`,
       data,
       headers: { "Content-Type": "application/json" },
     })
