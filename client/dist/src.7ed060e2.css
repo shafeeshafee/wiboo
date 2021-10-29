@@ -33,10 +33,8 @@ body {
 }
 
 .logo {
-  max-height: 100%;
-  min-height: 196px;
-  min-height: 100%;
-  max-width: 150px;
+  height: 100px;
+  width: 100px;
   margin-left: 2rem;
   border-right: 1px solid rgba(80, 52, 0, 0.61);
 }
@@ -78,6 +76,7 @@ body {
 .centerize {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   margin: 1rem auto;
 }
@@ -87,6 +86,12 @@ body {
   flex-direction: column;
 
   margin: 1rem auto;
+}
+
+.error-msg {
+  padding: 1rem 0;
+  color: red;
+  font-size: 0.9rem;
 }
 
 #signed_up {
@@ -309,6 +314,55 @@ body {
 
 .social-container li {
   margin: 1rem 1.3rem 0 0;
+}
+
+/* media queries */
+
+/* width: 100vh; */
+
+@media only screen and (max-width: 1024px) {
+  .nav {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .nav-content {
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .logo,
+  .links img {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .chatContainer {
+    height: 100vh;
+    width: 100%;
+    font-size: 10px;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .links {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .logIn,
+  .inputs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }
 
 @charset "UTF-8";/*!

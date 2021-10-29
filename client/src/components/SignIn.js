@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 function LogIn() {
   let history = useHistory();
   const [data, setData] = useState({ email: "", password: "" });
+  const [hasError, setHasError] = useState("");
 
   const localStorageSet = (token) => {
     localStorage.setItem("loggedIn", token);
@@ -21,9 +22,10 @@ function LogIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setHasError("");
     localStorage.clear();
 
-    axios({
+    await axios({
       method: "POST",
       url: "http://localhost:5000/auth/login",
       data,
@@ -31,12 +33,17 @@ function LogIn() {
     })
       .then((response) => {
         //handle success
-        localStorageSet(response.data.token);
-        redirect();
+        if (!response) {
+          console.log("new error");
+        } else {
+          localStorageSet(response.data.token);
+          redirect();
+        }
       })
       .catch((err) => {
         //handle error
-        console.err(err.message);
+        console.log(err.response.data.errors[0].msg);
+        setHasError(err.response.data.errors[0].msg);
       });
   };
   return (
@@ -82,6 +89,7 @@ function LogIn() {
           >
             Sign In
           </Button>
+          <p className="error-msg">{hasError}</p>
         </div>
       </form>
     </div>
