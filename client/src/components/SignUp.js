@@ -7,12 +7,12 @@ import { SignUpSuccess } from "./SignUpContainer";
 
 function SignUp() {
   const { val, setVal, signedUp, setSignedUp } = useContext(SignUpSuccess);
-
   const [data, setData] = useState({ email: "", password: "" });
+  const [hasError, setHasError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setHasError("");
     axios({
       method: "POST",
       url: "http://localhost:5000/auth/signup",
@@ -27,7 +27,8 @@ function SignUp() {
       })
       .catch((err) => {
         //handle error
-        console.error(err.message);
+        setHasError(err.response.data.errors[0].msg);
+        console.log(err.data);
       });
   };
 
@@ -74,6 +75,7 @@ function SignUp() {
             >
               Submit
             </Button>
+            <h1 className="error-msg">{hasError}</h1>
           </div>
         </form>
       </div>

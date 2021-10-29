@@ -10,7 +10,7 @@ const users = require("../db");
 router.post(
   "/signup",
   [
-    check("email", "Please input a valid email").isEmail(),
+    check("email", "Please input a valid email.").isEmail(),
     check(
       "password",
       "Please input a password with a min length of 6."
@@ -42,7 +42,7 @@ router.post(
       return res.status(422).json({
         errors: [
           {
-            msg: "This user already exists",
+            msg: "This user already exists in our database.",
           },
         ],
       });
@@ -85,7 +85,7 @@ router.post("/login", async (req, res) => {
     return res.status(422).json({
       errors: [
         {
-          msg: "Invalid Credentials",
+          msg: "Invalid credentials.",
         },
       ],
     });
@@ -98,7 +98,7 @@ router.post("/login", async (req, res) => {
     return res.status(404).json({
       errors: [
         {
-          msg: "Invalid Credentials",
+          msg: "Invalid credentials.",
         },
       ],
     });
